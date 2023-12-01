@@ -1,12 +1,14 @@
 // Llama a una funcion
-es2();
+
+/* principal1(); */
+
 // Actividad 1
 function principal1() {
   function act1() {
-    var texto = prompt("Ingrese un texto");
+    let texto = prompt("Ingrese un texto");
     return texto;
   }
-  var respuesta = act1();
+  let respuesta = act1();
   console.log(`Su texto tiene ${respuesta.length} caracteres`);
 }
 
@@ -92,3 +94,30 @@ function es2() {
   let resultado = calcular();
   alert(`Debe abonar $${resultado}`);
 }
+
+//CONDICIONALES
+/* if (condition) {
+    
+} else {
+    
+} */
+
+/* OPERADORES DE COMPARACION: 
+< menor
+> mayor
+<= menor o igual
+>= mayor o igual
+== igual
+=== estrictamente igual
+!= Distinto
+
+OPERADORES LOGICOS
+    &&(AND) (Es TRUE cuando ambas condiciones son verdaderas)
+    ||(OR) (Es TRUE cuando alguna de las condiciones es verdadera)
+    !(NOT) (Niega la confirmacion)
+    
+
+OPERADOR TERNARIO
+(condicion)?true:false
+    es obligatorio tener las dos condiciones, true y false
+*/

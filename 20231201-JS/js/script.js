@@ -1,5 +1,5 @@
 // Llama a una funcion
-es1();
+es2();
 // Actividad 1
 function principal1() {
   function act1() {
@@ -75,8 +75,20 @@ function principalVacaciones() {
 
 // Ejercios ES6
 // 1
-function es1(){
-    let nombre = "Gabriela"
-    let profesion = "programadora"
-    alert(`${nombre} es ${profesion}`)
+function es1() {
+  let nombre = "Gabriela";
+  let profesion = "programadora";
+  alert(`${nombre} es ${profesion}`);
+}
+
+// 2
+function es2() {
+  let precio = Number(prompt("Ingrese el precio del articulo"));
+  let cantidad = Number(prompt("Ingrese la cantidad"));
+  function calcular() {
+    let calculo = precio * cantidad;
+    return calculo;
+  }
+  let resultado = calcular();
+  alert(`Debe abonar $${resultado}`);
 }

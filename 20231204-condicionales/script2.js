@@ -122,7 +122,7 @@ let cuenta = 0;
 let rta;
 let prod;
 let prop;
-let continuar= true;
+let continuar = true;
 let cantidad = 0;
 let propina = 1.15;
 let coca = 500;
@@ -193,13 +193,12 @@ do {
           case 0:
             break;
           case 1:
-            alert("El total a pagar es " + cuenta * propina);
+            alert("El total a pagar es " + Math.round(cuenta * propina));
             break;
           case 2:
             alert("El total a pagar es " + cuenta);
             break;
           default:
-
             break;
         }
       } while (prop != 0);
@@ -211,7 +210,7 @@ do {
       break;
     default:
       alert("Apretaste cualquiera eh");
-      rta=0;
+      rta = 0;
       break;
   }
 } while (rta != 0);

@@ -98,7 +98,7 @@ function cantPositivos() {
 }
 
 /* FizzBuzz hecho con for*/
-fizzBuzz();
+
 function fizzBuzz() {
   for (let i = 1; i < 100; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
@@ -117,7 +117,7 @@ le muestro una lista de productos que puede seleccionar
 cuando pide la cta puede dejar propina
 simular un mozo y le puedo pedir chistes */
 
-alert("Bienvenido/a al mejor bar del condado");
+/* alert("Bienvenido/a al mejor bar del condado");
 let cuenta = 0;
 let rta;
 let prod;
@@ -215,3 +215,30 @@ do {
   }
 } while (rta != 0);
 alert("Gracias por venir");
+ */
+
+// for ejercicio piramide
+let h = Number(prompt("Ingrese la altura de la piramide que desea crear"));//h = altura
+
+for (let i = 1; i <= h; i++) {
+  let linea = "";
+  for (let j = 1; j <= i; j++) {
+    linea += "*";
+  }
+  console.log(linea);
+}
+for (let i = h - 1; i >= 1; i--) {
+  let linea = "";
+  for (let j = 1; j <= i; j++) {
+    linea += "*";
+  }
+  console.log(linea);
+}
+
+// calcular el factorial de un numero
+let n = Number(prompt("Ingrese un numero para calcular su factorial"));
+let rdo = 1;
+for (let i = 1; i <= n; i++) {
+  rdo *= i;
+}
+console.log(rdo);

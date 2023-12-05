@@ -28,17 +28,21 @@ function calcular() {
   valorVisor = ultimoTotal;
 }
 
-//funcion para capturar los elementos del visor
+//Funcion para capturar los elementos del visor
 function boton(opc) {
   let pantalla = document.getElementById("visor").value;
   document.getElementById("visor").value = pantalla + opc;
   valorVisor = document.getElementById("visor").value = pantalla + opc;
 }
+
+//Funcion para guardar la variable y llamar a la funcion principal
 function btn_igual() {
-  num2 = valorVisor;// cuando apreto el igual se guarda la segunda variable
+  num2 = valorVisor; //Cuando apreto el igual se guarda la segunda variable
   calcular(); //Llamo a la funcion principal
 }
 
+
+//Funciones de los operadores
 function btn_suma(signo) {
   num1 = valorVisor;
   operacion = "+";
@@ -62,11 +66,14 @@ function btn_multiplicar(signo) {
   limpiarVisor();
 }
 
+//Funcion de reseteo
 function restart() {
   document.getElementById("visor").value = "";
   operacion = "";
   valorVisor = 0;
 }
+
+//Limpia el visor una vez capturado el elemento
 function limpiarVisor() {
   document.getElementById("visor").value = "";
 }

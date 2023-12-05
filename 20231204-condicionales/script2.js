@@ -1,5 +1,5 @@
 //switch
-/* function switch1() {
+function switch1() {
   let dato = prompt(
     "Ingrese alguna de las siguientes palabras: casa, perro, pelota, arbol o genio"
   );
@@ -61,7 +61,7 @@ function switch2() {
       alert("Ingrese un valor valido");
       break;
   }
-} */
+}
 
 // while
 
@@ -117,108 +117,120 @@ le muestro una lista de productos que puede seleccionar
 cuando pide la cta puede dejar propina
 simular un mozo y le puedo pedir chistes */
 
-/* alert("Bienvenido/a al mejor bar del condado");
-let cuenta = 0;
-let rta;
-let prod;
-let prop;
-let continuar = true;
-let cantidad = 0;
-let propina = 1.15;
-let coca = 500;
-let tostado = 2300;
-let cerveza = 1200;
-let empanada = 300;
-do {
-  rta = Number(
-    prompt(
-      "Ingrese una de las opciones! \n1- Quiero pedir algo YA \n2- La cuenta, jefe \n3- Tirame un chiste \n0- Para salir"
-    )
-  );
-  switch (rta) {
-    case 0:
-      break;
-    case 1:
-      do {
-        prod = Number(
-          prompt(
-            `Que desea consumir? \n1- CocaCola = $${coca}. \n2- Tostado de JyQ = $${tostado}. \n3- Cerveza = $${cerveza}. \n4- Empanadas = $${empanada}\n0- Para volver`
-          )
-        );
+function bar() {
+  alert("Bienvenido/a al mejor bar del condado");
 
-        switch (prod) {
-          case 0:
-            break;
-          case 1:
-            cantidad = Number(prompt("Cuantas CocaCola quiere?"));
-            while (cantidad > 0) {
-              cuenta += cantidad * coca;
-              cantidad = 0;
-            }
-            break;
-          case 2:
-            cantidad = Number(prompt("Cuantos tostados completos quiere?"));
-            while (cantidad > 0) {
-              cuenta += cantidad * tostado;
-              cantidad = 0;
-            }
-            break;
-          case 3:
-            cantidad = Number(prompt("Cuantas cervezas de litro quiere?"));
-            while (cantidad > 0) {
-              cuenta += cantidad * cerveza;
-              cantidad = 0;
-            }
-            break;
-          case 4:
-            cantidad = Number(prompt("Cuantas empanadas de JyQ quiere?"));
-            while (cantidad > 0) {
-              cuenta += cantidad * empanada;
-              cantidad = 0;
-            }
-            break;
-          default:
-            alert("Ingrese un valor valido");
-        }
-      } while (prod != 0);
-      break;
-    case 2:
-      do {
-        prop = Number(
-          prompt(
-            "Desea agregar una propina del 15%? \n1- Si \n2- No \n0- Salir"
-          )
-        );
-        switch (prop) {
-          case 0:
-            break;
-          case 1:
-            alert("El total a pagar es " + Math.round(cuenta * propina));
-            break;
-          case 2:
-            alert("El total a pagar es " + cuenta);
-            break;
-          default:
-            break;
-        }
-      } while (prop != 0);
-      break;
-    case 3:
-      alert(
-        "¿Qué le dice un jardinero a otro? Seamos felices mientras podamos."
+  let cuenta = 0;
+  let rta;
+  let prod;
+  let prop;
+  let continuar = true;
+  let cantidad = 0;
+  let propina = 1.15;
+  let coca = 500;
+  let tostado = 2300;
+  let cerveza = 1200;
+  let empanada = 300;
+
+  menuPrincipal();
+
+  function pedido() {
+    do {
+      prod = Number(
+        prompt(
+          `Que desea consumir? \n1- CocaCola = $${coca}. \n2- Tostado de JyQ = $${tostado}. \n3- Cerveza = $${cerveza}. \n4- Empanadas = $${empanada}\n0- Para volver`
+        )
       );
-      break;
-    default:
-      alert("Apretaste cualquiera eh");
-      rta = 0;
-      break;
+
+      switch (prod) {
+        case 0:
+          break;
+        case 1:
+          cantidad = Number(prompt("Cuantas CocaCola quiere?"));
+          while (cantidad > 0) {
+            cuenta += cantidad * coca;
+            cantidad = 0;
+          }
+          break;
+        case 2:
+          cantidad = Number(prompt("Cuantos tostados completos quiere?"));
+          while (cantidad > 0) {
+            cuenta += cantidad * tostado;
+            cantidad = 0;
+          }
+          break;
+        case 3:
+          cantidad = Number(prompt("Cuantas cervezas de litro quiere?"));
+          while (cantidad > 0) {
+            cuenta += cantidad * cerveza;
+            cantidad = 0;
+          }
+          break;
+        case 4:
+          cantidad = Number(prompt("Cuantas empanadas de JyQ quiere?"));
+          while (cantidad > 0) {
+            cuenta += cantidad * empanada;
+            cantidad = 0;
+          }
+          break;
+        default:
+          alert("Ingrese un valor valido");
+      }
+    } while (prod != 0);
   }
-} while (rta != 0);
-alert("Gracias por venir");
- */
+  function cuentaPropina() {
+    do {
+      prop = Number(
+        prompt("Desea agregar una propina del 15%? \n1- Si \n2- No \n0- Salir")
+      );
+      switch (prop) {
+        case 0:
+          break;
+        case 1:
+          alert("El total a pagar es " + Math.round(cuenta * propina));
+          break;
+        case 2:
+          alert("El total a pagar es " + cuenta);
+          break;
+        default:
+          break;
+      }
+    } while (prop != 0);
+  }
+
+  function menuPrincipal() {
+    do {
+      rta = Number(
+        prompt(
+          "Ingrese una de las opciones! \n1- Quiero pedir algo YA \n2- La cuenta, jefe \n3- Tirame un chiste \n0- Para salir"
+        )
+      );
+      switch (rta) {
+        case 0:
+          break;
+        case 1:
+          pedido();
+          break;
+        case 2:
+          cuentaPropina();
+          break;
+        case 3:
+          alert(
+            "¿Qué le dice un jardinero a otro? Seamos felices mientras podamos."
+          );
+          break;
+        default:
+          alert("Apretaste cualquiera eh");
+          rta = 0;
+          break;
+      }
+    } while (rta != 0);
+    alert("Gracias por venir");
+  }
+}
 
 // for ejercicio piramide
-let h = Number(prompt("Ingrese la altura de la piramide que desea crear"));//h = altura
+/* let h = Number(prompt("Ingrese la altura de la piramide que desea crear"));//h = altura
 
 for (let i = 1; i <= h; i++) {
   let linea = "";
@@ -234,11 +246,11 @@ for (let i = h - 1; i >= 1; i--) {
   }
   console.log(linea);
 }
-
+ */
 // calcular el factorial de un numero
-let n = Number(prompt("Ingrese un numero para calcular su factorial"));
+/* let n = Number(prompt("Ingrese un numero para calcular su factorial"));
 let rdo = 1;
 for (let i = 1; i <= n; i++) {
   rdo *= i;
 }
-console.log(rdo);
+console.log(rdo); */

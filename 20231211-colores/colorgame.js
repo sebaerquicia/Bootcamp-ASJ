@@ -7,15 +7,17 @@ const reset = document.getElementById("reset")
 const h1 = document.getElementById("h1");
 let pickedColor = colors[2];
 let colorsRGB =[]
-
 let clickedColor 
+
 colorDisplay.innerText = pickedColor;
+function principal(){
 
-for(let i = 0; i<cuadrados.length; i++){
-    cuadrados[i].setAttribute("id", colors[i]);
-    cuadrados[i].setAttribute("onclick", `cambiarColor(${i})`);
-    cuadrados[i].setAttribute("style", `background-color:${colors[i]}`);
-
+    for(let i = 0; i<cuadrados.length; i++){
+        cuadrados[i].setAttribute("id", colors[i]);
+        cuadrados[i].setAttribute("onclick", `cambiarColor(${i})`);
+        cuadrados[i].setAttribute("style", `background-color:${colors[i]}`);
+        
+    }
 }
 
 function cambiarColor(i){
@@ -45,9 +47,6 @@ function randomColor(){
 
 
 function generateRandomColors(){
-    colorsRGB=[]
-    spanMsg.innerText = "";
-    h1.style = `background-color:${pickedColor}`
     for(i=0; i < cuadrados.length; i++){
         colorsRGB.push(randomColor())
         colors = colorsRGB
@@ -56,3 +55,12 @@ function generateRandomColors(){
     pickedColor = colors[(Math.floor(Math.random() * colors.length))]
     colorDisplay.innerText = pickedColor;
 }
+
+function resetGame(){
+    colorsRGB=[]
+    spanMsg.innerText = "";
+    h1.style = `background-color: #232323`
+    generateRandomColors()
+    principal()
+}
+principal()

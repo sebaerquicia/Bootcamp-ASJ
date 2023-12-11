@@ -16,7 +16,7 @@ const h1 = document.getElementById("h1");
 let colorsRGB = [];
 /* let pickedColor = colors[2] */
 let pickedColor = colors[Math.floor(Math.random() * colors.length)];
-
+                
 let clickedColor;
 
 colorDisplay.innerText = pickedColor;
@@ -47,7 +47,7 @@ function randomColor() {
   let blue = Math.floor(Math.random() * 256);
   return `rgb(${red}, ${green}, ${blue})`;
 }
-
+                           
 function generateRandomColors() {
   for (i = 0; i < cuadrados.length; i++) {
     colorsRGB.push(randomColor());

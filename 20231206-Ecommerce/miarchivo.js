@@ -8,7 +8,7 @@ fetch("./info.json")
 function principal(productos) {
   let carritoRecuperado = localStorage.getItem("carrito");
   let carrito = carritoRecuperado ? JSON.parse(carritoRecuperado) : [];
-
+  
   renderizarCarrito(carrito);
   renderizarProductos(productos, carrito);
 

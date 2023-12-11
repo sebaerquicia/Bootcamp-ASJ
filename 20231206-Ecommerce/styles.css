@@ -23,7 +23,10 @@ a:hover {
 body {
   font-family: "Oxanium";
 }
-
+nav{
+  display: flex;
+  flex-direction: column;
+}
 .hcontent {
   padding: 2rem;
   color: wheat;

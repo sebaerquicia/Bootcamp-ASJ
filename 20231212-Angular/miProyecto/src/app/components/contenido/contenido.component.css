@@ -1,0 +1,11 @@
+.mi-componente{
+    color: violet;
+}
+h1{
+    font-size: 3rem;
+}
+img{
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}

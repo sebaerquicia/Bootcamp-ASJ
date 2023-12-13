@@ -5,7 +5,7 @@ h1{
     font-size: 3rem;
 }
 img{
-    height: auto;
-    width: 100%;
+    min-width: 20rem;
+    max-height: 20rem;
     object-fit: cover;
 }

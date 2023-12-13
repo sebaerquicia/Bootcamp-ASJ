@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './contenido.component.css',
 })
 export class ContenidoComponent {
-  titulo = "La Mayor";
+  titulo = "Meinl Cymbals";
   num = 0;
   generarAleatorio() {
     this.num = Math.floor(Math.random() * 11);
@@ -17,4 +17,5 @@ export class ContenidoComponent {
   decrementar() {
     this.num--;
   }
+  
 }

@@ -7,13 +7,15 @@ import { ContenidoComponent } from './components/contenido/contenido.component';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MiheaderComponent } from './components/miheader/miheader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContenidoComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    MiheaderComponent
   ],
   imports: [
     BrowserModule,

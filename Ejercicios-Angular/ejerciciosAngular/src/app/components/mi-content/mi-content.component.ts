@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-
+/* import { ActivatedRoute } from '@angular/router'; */
 @Component({
   selector: 'app-mi-content',
   templateUrl: './mi-content.component.html',
   styleUrl: './mi-content.component.css'
 })
 export class MiContentComponent {
+/* 
+constructor(private ruta:ActivatedRoute){}
+parametroURL=this.ruta.snapshot.params[idProducto]
+ */
   nuevaTarea : string = '';
   listaTareas: {texto: string; tachada: boolean}[] =[]
   mostrarTachadas: boolean = false;

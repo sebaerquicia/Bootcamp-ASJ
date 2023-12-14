@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 m-4">
+      <h2>FORMULARIO SIMPSON</h2>
+      <br />
+      <hr />
+      <br />
+      <div class=" ">
+        <label for="name">Nombre del personaje</label>
+        <input
+          id="name"
+          type="text"
+          placeholder="Nombre del personaje"
+          class="p-2"
+          #name
+        />
+      </div>
+      <br />
+      <hr />
+      <br />
+      <div>
+        <label for="imgSimspon">URL de la imagen</label>
+        <input
+          type="text"
+          name="imgSimspon"
+          id="image"
+          placeholder="Inserte la URL de la imagen"
+          class="p-2"
+          #url
+        />
+      </div>
+      <br />
+      <hr />
+      <br />
+      <div>
+        <label for="prof">Profesión</label>
+        <input
+          type="text"
+          name="prof"
+          placeholder="Profesión del personaje..."
+          class="p-2"
+          #profesion
+        />
+      </div>
+      <br />
+      <hr />
+      <br />
+      <div class="justify-content-center">
+        <button
+          class="btn btn-success p-3 "
+          (click)="insertForm(name.value, url.value, profesion.value)"
+        >
+          Agregar personaje
+        </button>
+      </div>
+    </div>
+    <div class="col-md-8 p-4 ">
+      <h2>Personajes agregados</h2>
+      <div class="col p-5">
+        <ul class="list-group">
+          <li
+            class="list-group-item justify-content-around text-center align-items-center"
+            *ngFor="let personaje of listaPersonajes"
+          >
+            <img src="{{ personaje.url }}" alt="Imagen del personaje" />
+            <hr />
+            <h3>Nombre: {{ personaje.name.toUpperCase() }}</h3>
+            <p>Profesión/Rol: {{ personaje.profesion }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

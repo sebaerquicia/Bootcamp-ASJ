@@ -9,6 +9,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MiFooterComponent } from './components/mi-footer/mi-footer.component';
 import { MiContentComponent } from './components/mi-content/mi-content.component';
 import { MiSidebarComponent } from './components/mi-sidebar/mi-sidebar.component';
+import { SimpsonsComponent } from './components/simpsons/simpsons.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { MiSidebarComponent } from './components/mi-sidebar/mi-sidebar.component
     NavbarComponent,
     MiFooterComponent,
     MiContentComponent,
-    MiSidebarComponent
+    MiSidebarComponent,
+    SimpsonsComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

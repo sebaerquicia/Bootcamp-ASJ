@@ -12,13 +12,13 @@
 
                 <input class="p-2 w-25 mx-3" type="text" placeholder="Ingresa una tarea que deseas anotar"(keyup.enter)="agregarTarea()" [(ngModel)]="nuevaTarea">
                 <button class="btn btn-success " (click)="agregarTarea()">Agregar tarea</button>
-                <button class="btn btn-secondary mx-2 " (click)="mostrarTachadas = !mostrarTachadas"> {{mostrarTachadas ? 'Mostrar Pendientes' : 'Mostrar Terminados'}}</button>
+                <button class="btn btn-primary  mx-2 " (click)="mostrarTachadas = !mostrarTachadas"> {{mostrarTachadas ? 'Todas las tareas' : 'A realizar...'}}</button>
             </div>  
         </div>
         <div class="row">
             <div class="col p-5 ">
                 <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let tarea of filtrarTarea(); let i = index" [ngClass]="{'tachado':tarea.tachada}"> {{i + 1}}- {{tarea.texto}} <div class="float-end "> <button (click)="tacharTarea(i)"  class="btn btn-warning mx-3 ">Tachar</button> <button (click)="eliminarTarea(i)"  class="btn btn-danger ">Eliminar</button></div></li>
+                    <li class="list-group-item" *ngFor="let tarea of filtrarTarea(); let i = index" [ngClass]="{'tachado':tarea.tachada}"> {{i + 1}}- {{tarea.texto}} <div class="float-end "> <button (click)="tacharTarea(i)"  class="btn btn-warning mx-3 ">{{tarea.tachada ? 'Desmarcar' : 'Finalizar'}}</button> <button (click)="eliminarTarea(i)"  class="btn btn-danger ">Eliminar</button></div></li>
                 </ul>
             </div>
         </div>

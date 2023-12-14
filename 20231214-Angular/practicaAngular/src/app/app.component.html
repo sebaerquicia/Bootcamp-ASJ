@@ -1,0 +1,12 @@
+<div class="padre">
+  <h4>PADRE</h4>
+  <app-hijo
+    [datoEnviado]="{ nombre: 'Lucas', motivoExp: 'Comunicacion Padre-Hijo' }"
+  ></app-hijo>
+  <app-hijo (mensaje)="recibirMsj($event)"></app-hijo>
+  <p>Mensaje del Hijo: {{ msjContenido }}</p>
+  <hr />
+  <input type="text" #myInput />
+  <button (click)="mostrar(myInput.value); myInput.value = ''">Mostrar</button>
+  <h4>{{ contenidoInput }}</h4>
+</div>

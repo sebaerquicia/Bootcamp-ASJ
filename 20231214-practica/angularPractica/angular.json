@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ejerciciosAngular": {
+    "angularPractica": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ejercicios-angular",
+            "outputPath": "dist/angular-practica",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -35,10 +35,9 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -68,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ejerciciosAngular:build:production"
+              "buildTarget": "angularPractica:build:production"
             },
             "development": {
-              "buildTarget": "ejerciciosAngular:build:development"
+              "buildTarget": "angularPractica:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ejerciciosAngular:build"
+            "buildTarget": "angularPractica:build"
           }
         },
         "test": {
@@ -102,8 +101,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": false
   }
 }

@@ -29,6 +29,7 @@ export class SimpsonsComponent {
       this.nameContent = '';
       this.urlContent = '';
       this.profesionContent = '';
+      
     }else{
       alert('Completa todos los campos')
     }

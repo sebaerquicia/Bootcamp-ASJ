@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import{FormsModule} from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,10 @@ import { MiContentComponent } from './components/mi-content/mi-content.component
 import { MiSidebarComponent } from './components/mi-sidebar/mi-sidebar.component';
 import { SimpsonsComponent } from './components/simpsons/simpsons.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { RickandmortyComponent } from './components/rickandmorty/rickandmorty.component';
+import { RickandmortyDetailsComponent } from './components/rickandmorty-details/rickandmorty-details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ServicioEjemploService } from './services/servicio-ejemplo.service';
 
 @NgModule({
   declarations: [
@@ -20,15 +24,18 @@ import { InicioComponent } from './components/inicio/inicio.component';
     MiContentComponent,
     MiSidebarComponent,
     SimpsonsComponent,
-    InicioComponent
+    InicioComponent,
+    RickandmortyComponent,
+    RickandmortyDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ServicioEjemploService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

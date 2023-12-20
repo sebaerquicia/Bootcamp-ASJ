@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row mt-2">
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="../">Home</a></li>
+            <li class="breadcrumb-item text-nowrap me-3"><p>{{product.category.name}}</p></li>
+            <li class="breadcrumb-item text-nowrap"><p>{{product.title}}</p></li>
+          </ol>
+        </nav>
+  </div>
+  <div class="row mt-4">
+      <div class="col-12 col-md-6">
+          <div id="carouselExampleIndicators" class="carousel slide">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div *ngFor="let img of product.images;index as i" [ngClass]="i === 0? 'carousel-item active' : 'carousel-item'">
+                  <img src="{{img}}" (error)="handleImageError(product.category.image)" class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+      </div>
+      <div class="col-12 col-md-6">
+          <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <p class="card-text">${{product.price}}</p>
+                <a (click)="agregarProducto(product)" class="btn btn-primary">Comprar</a>
+              </div>
+            </div>
+      </div>
+  </div>
+</div>

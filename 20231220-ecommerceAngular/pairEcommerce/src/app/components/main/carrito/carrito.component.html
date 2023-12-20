@@ -1,0 +1,38 @@
+<div class="container mt-4">
+    <div *ngFor="let product of cartProducts;index as i" class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{product.images[0]}}"
+            (error)="handleImageError(i,product.category.image)" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{product.title}}</h5>
+              <p class="card-text">{{product.description}}</p>
+              <p class="card-text">{{product.price | currency:'USD'}}</p>
+              <div class="d-flex align-items-center">
+                <button (click)="sumarStock(i)" class="btn btn-primary me-3">+</button>
+                <p class="m-0">{{stockProducts[i]}}</p>
+                <button (click)="restarStock(i)" class="btn btn-primary ms-3">-</button>
+              </div>
+              <button (click)="deleteProduct(product.id)" class="btn btn-danger mt-3">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="cartProducts.length == 0">
+        <a routerLink="/products">No hay productos en el carrito, ve a ver el catalogo</a>
+        </div>
+      <div class="row">
+        <div class="d-flex align-items-center">
+            <h3>Total: </h3>
+            <p class="h3">{{totalPrice | currency:'USD'}}</p>
+        </div>
+        <button *ngIf="cartProducts.length > 0" (click)="vaciarCarrito()" class="btn btn-success mt-3">Confirmar compra</button>
+      </div>
+      <div *ngIf="flagAlert" class="row">
+          <div class="alert alert-success" role="alert">
+           Gracias por tu compra!
+          </div>
+      </div>
+</div>

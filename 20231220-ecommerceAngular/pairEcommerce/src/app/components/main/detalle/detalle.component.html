@@ -8,7 +8,7 @@
           </ol>
         </nav>
   </div>
-  <div class="row mt-4">
+  <div class="row my-4">
       <div class="col-12 col-md-6">
           <div id="carouselExampleIndicators" class="carousel slide">
               <div class="carousel-indicators">
@@ -34,10 +34,10 @@
       <div class="col-12 col-md-6">
           <div class="card mb-3">
               <div class="card-body">
-                <h5 class="card-title">{{product.title}}</h5>
+                <h1 class="card-title">{{product.title}}</h1>
                 <p class="card-text">{{product.description}}</p>
-                <p class="card-text">${{product.price}}</p>
-                <a (click)="agregarProducto(product)" class="btn btn-primary">Comprar</a>
+                <p class="card-text fs-3 text-success fw-semibold ">${{product.price}}</p>
+                <a (click)="agregarProducto(product)" class="btn btn-success ">Comprar</a>
               </div>
             </div>
       </div>

@@ -1,32 +1,46 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg border border-end-0 border-top-0 border-start-0 border-black">
   <div class="container">
     <a class="navbar-brand" routerLink="/products">Ecommerce</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/products">Home</a>
+          <a class="nav-link active" aria-current="page" routerLink="/products"
+            >Home</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link"[routerLink]="['/products/categories/', 1]">Clothes</a>
-        </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link"[routerLink]="['/products/categories/', 2]">Categoria 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"[routerLink]="['/products/categories/', 3]">Categoria 3</a>
+          <a class="nav-link" [routerLink]="['/products/categories/', 1]"
+            >Clothes</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link"[routerLink]="['/products/categories/', 4]">Categoria 4</a>
-        </li> -->
+            <a class="nav-link"[routerLink]="['/products/categories/', 2]">Tech</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"[routerLink]="['/products/categories/', 3]">Furniture</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"[routerLink]="['/products/categories/', 4]">Shoes</a>
+          </li>
         <li class="nav-item">
-          <a class="nav-link"[routerLink]="['/products/categories/', 5]">Miscellaneous</a>
+          <a class="nav-link" [routerLink]="['/products/categories/', 5]"
+            >Miscellaneous</a
+          >
         </li>
         <li class="nav-item d-flex align-items-center">
-          <a class="nav-link"routerLink="/cart">Cart</a>
-          <p class="m-0">{{cantProd}}</p>
+          <a class="nav-link me-2 me-md-0" routerLink="/cart">Cart</a>
+          <p class="m-0">{{ cantProd }}</p>
         </li>
       </ul>
     </div>

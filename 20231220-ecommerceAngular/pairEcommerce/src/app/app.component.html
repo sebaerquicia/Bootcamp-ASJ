@@ -1,4 +1,8 @@
 <app-header></app-header>
-<main class="border border-end-0 border-bottom-0 border-start-0 border-black">
-  <router-outlet></router-outlet>
-</main>
+<div class="row">
+  <app-sidebar class="col-2"></app-sidebar>
+  <main class="col-10">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+<app-footer></app-footer>

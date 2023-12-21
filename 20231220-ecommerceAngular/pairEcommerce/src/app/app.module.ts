@@ -9,6 +9,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CatalogoComponent } from './components/main/catalogo/catalogo.component';
 import { DetalleComponent } from './components/main/detalle/detalle.component';
 import { CarritoComponent } from './components/main/carrito/carrito.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { CarritoComponent } from './components/main/carrito/carrito.component';
     FooterComponent,
     CatalogoComponent,
     DetalleComponent,
-    CarritoComponent
+    CarritoComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

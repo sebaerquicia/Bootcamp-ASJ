@@ -15,29 +15,63 @@ export class CatalogoComponent implements OnInit {
     // Subscribe to route params changes
     this.route.params.subscribe(params => {
       const idCat = params['idCat'];
-      const title = params['titulo'];
-      const precio = params['precio'];
-      const rangoValor = params['rangoValor'];
-      
       //Renderiza todos los productos
       this.catalogoService.getData().subscribe((data: any) => {
       this.productos = data;
       this.category = 'Todos los productos'
       });
       // Filtracion
-
+      let fullpath = params['fullpath'];
+      let categoria = ''
+      let title =  '';
+      let min = ''
+      let max = ''
+      if(fullpath !== undefined){
+        if(fullpath.includes("-")) {
+          fullpath = fullpath.split('-');
+          categoria = fullpath[0]
+          title =  fullpath[1];
+          min = fullpath[2]
+          max = fullpath[3]
+        }
+      }
       idCat && this.filterProducts("CATEGORIA",idCat);
-      title && this.filterProducts("TITULO",title);
-      precio && this.filterProducts("PRECIO",precio);
-      rangoValor && this.filterProducts("RANGO",rangoValor);
+      if(categoria !== 'null' && title !== 'null' && min !== 'null' && max !== 'null') this.filterProducts("PATHCOMPLETO",fullpath);
+      else if (categoria !== 'null' && title !== 'null' && min === 'null' && max === 'null') this.filterProducts ("CATEGORIATITULO", fullpath);
+      else if (categoria !== 'null' && title === 'null' && min !== 'null' && max !== 'null') this.filterProducts ("CATEGORIAPRECIO",fullpath);
+      else if (categoria === 'null' && title !== 'null' && min !== 'null' && max !== 'null') this.filterProducts ("TITULOPRECIO",fullpath);
+      else if (categoria === 'null' && title !== 'null' && min === 'null' && max === 'null') this.filterProducts("TITULO",title);
+      else if (categoria !== 'null' && title === 'null' && min === 'null' && max === 'null') this.filterProducts("CATEGORIAFILTRO",categoria);
+      else if (categoria === 'null' && title === 'null' && min !== 'null' && max !== 'null') this.filterProducts("RANGO",fullpath);  
     });
   }
-  filterProducts (param:string, valor:string):void {
-    let min = '';
-    let max = '';
+  filterProducts (param:string, valor:any):void {
+    if (param === "PATHCOMPLETO") {
+      this.catalogoService.getDataFullPath(valor[0],valor[1],valor[2],valor[3]).subscribe((data: any) => {
+        this.productos = data;
+        this.category = `Filtrado por categoria ${valor[0]}, ${valor[1]}, rango de precio $${valor[2]} - $${valor[3]}`
+      });
+    }
+    if (param === "CATEGORIATITULO") {
+      this.catalogoService.getDataCategoryTitle(valor[0],valor[1]).subscribe((data: any) => {
+        this.productos = data;
+        this.category = `Filtrado por categoria ${valor[0]}, ${valor[1]}`
+      });
+    }
+    if (param === "CATEGORIAPRECIO") {
+      this.catalogoService.getDataCategoryPrice(valor[0],valor[2],valor[3]).subscribe((data: any) => {
+        this.productos = data;
+        this.category = `Filtrado por categoria ${valor[0]}, rango de precio $${valor[2]} - $${valor[3]}`
+      });
+    }
+    if (param === "TITULOPRECIO") {
+      this.catalogoService.getDataTitlePrice(valor[1],valor[2],valor[3]).subscribe((data: any) => {
+        this.productos = data;
+        this.category = `${valor[1]}, rango de precio $${valor[2]} - $${valor[3]}`
+      });
+    }
     if (param === "CATEGORIA") {
       this.catalogoService.getDataCategory(valor).subscribe((data: any) => {
-        console.log(data)
         this.productos = data;
         this.category = data[0].category.name
       });
@@ -48,32 +82,16 @@ export class CatalogoComponent implements OnInit {
         this.category = valor;
       })
     } 
-    if (param === "PRECIO") {
-      this.catalogoService.getDataPrice(valor).subscribe((data:any) => {
+    if(param === "CATEGORIAFILTRO") {
+      this.catalogoService.getDataCategoryFilter(valor).subscribe((data:any) => {
         this.productos = data;
-        this.category = "Filtracion por precio " + valor;
+        this.category = data[0].category.name;
       })
     }
     if(param === "RANGO") {
-      switch (valor){
-        case '1':
-        min = '1';
-        max = '99'
-        break;
-        case '2':
-        min = '100';
-        max = '499'
-        break;
-        case '3':
-        min = '500';
-        max = '999'
-        break;
-        default:
-        alert('No existe ese rango de precio');
-      }
-      this.catalogoService.getDataPriceRange(min,max).subscribe((data:any) => {
+      this.catalogoService.getDataPriceRange(valor[2],valor[3]).subscribe((data:any) => {
         this.productos = data;
-        this.category = "Filtracion por rango " + min + ' - ' + max;
+        this.category = "Filtracion por rango " + valor[2] + ' - ' + valor[3];
       })
     }
   }

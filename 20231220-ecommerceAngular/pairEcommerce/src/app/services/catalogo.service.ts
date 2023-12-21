@@ -26,4 +26,19 @@ export class CatalogoService {
   public getDataPriceRange(min:string,max:string):Observable<any> {
     return this.http.get(`https://api.escuelajs.co/api/v1/products/?price_min=${min}&price_max=${max}`)
   }
+  public getDataCategoryFilter (id:string) {
+    return this.http.get(this.URL + '/?categoryId=' + id)
+  }
+  public getDataFullPath(categoria:string,title:string,min:string,max:string) {
+    return this.http.get(`https://api.escuelajs.co/api/v1/products/?title=${title}&price_min=${min}&price_max=${max}&categoryId=${categoria}`)
+  }
+  public getDataCategoryTitle(categoria:string,title:string) {
+    return this.http.get(`https://api.escuelajs.co/api/v1/products/?title=${title}&categoryId=${categoria}`)
+  }
+  public getDataCategoryPrice(categoria:string,min:string,max:string) {
+    return this.http.get(`https://api.escuelajs.co/api/v1/products/?price_min=${min}&price_max=${max}&categoryId=${categoria}`)
+  }
+  public getDataTitlePrice(title:string,min:string,max:string) {
+    return this.http.get(`https://api.escuelajs.co/api/v1/products/?title=${title}&price_min=${min}&price_max=${max}`)
+  }
 }

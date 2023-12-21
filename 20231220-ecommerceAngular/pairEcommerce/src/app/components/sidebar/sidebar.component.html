@@ -1,76 +1,98 @@
 <!--Main Navigation-->
 <header>
-    <!-- Sidebar -->
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white pb-3">
-      <div class="position-sticky">
-        <div class="list-group list-group-flush mx-3 mt-4">
-          <h4
-            class="list-group-item list-group-item-action py-2 ripple"
-            aria-current="true"
-          >
-            <span class="fw-semibold">Aplicar filtros</span>
-          </h4>
-          <a class="list-group-item list-group-item-action py-2 ripple">
-            <span class="fw-semibold">Filtrar por nombre</span>
-            <div class="row">
-              <div class="col-12 p-0">
-                <input
-                  [(ngModel)]="titulo"
-                  placeholder="Ingrese nombre"
-                  type="text"
-                  class="form-control"
-                />
-              </div>
+  <!-- Sidebar -->
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white pb-3">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <h4
+          class="list-group-item list-group-item-action py-2 ripple"
+          aria-current="true"
+        >
+          <span class="fw-semibold">Aplicar filtros</span>
+        </h4>
+        <a class="list-group-item list-group-item-action py-2 ripple">
+          <span class="fw-semibold">Filtrar por nombre</span>
+          <div class="row">
+            <div class="col-12 p-0">
+              <input
+                [(ngModel)]="titulo"
+                placeholder="Ingrese nombre"
+                type="text"
+                class="form-control my-1"
+              />
             </div>
-          </a>
-          <button [disabled]="titulo === ''" [routerLink]="['/products/title/', titulo]" class="btn btn-primary"
-              >Filtrar por nombre</button
-            >
-          <a class="list-group-item list-group-item-action py-2 ripple"
-            ><span class="fw-semibold">Filtrar por precio</span>
-            <div class="row">
-              <div class="col-12 p-0">
-                <input
-                  [(ngModel)]="precio"
-                  placeholder="Ingrese Precio"
-                  type="number"
-                  min="1"
-                  class="form-control"
-                />
-              </div>
+          </div>
+        </a>
+        <!-- <button [disabled]="titulo === ''" [routerLink]="['/products/title/', titulo]" class="btn btn-primary"
+            >Filtrar por nombre</button
+          > -->
+        <!-- <a class="list-group-item list-group-item-action py-2 ripple"
+          ><span class="fw-semibold">Filtrar por precio</span>
+          <div class="row">
+            <div class="col-12 p-0">
+              <input
+                [(ngModel)]="precio"
+                placeholder="Ingrese Precio"
+                type="number"
+                min="1"
+                class="form-control my-1"
+              />
             </div>
-          </a>
-          <button [disabled]="precio <= 0" [routerLink]="['/products/price/', precio]" class="btn btn-primary"
-            >Filtrar por precio</button
-          >
+          </div>
+        </a> -->
+        <!-- <button [disabled]="precio <= 0" [routerLink]="['/products/price/', precio]" class="btn btn-primary"
+          >Filtrar por precio</button
+        > -->
           <a class="list-group-item list-group-item-action py-2 ripple"
-            ><span class="fw-semibold">Filtrar por rango de precio</span>
+          ><span class="fw-semibold">Filtrar por rango de precio</span>
+          <div class="row">
+            <div class="col-12 p-0">
+              <input
+                [(ngModel)]="precioMin"
+                placeholder="Precio Minimo"
+                type="number"
+                min="1"
+                class="form-control my-1"
+              />
+            </div>
+            <div class="col-12 p-0">
+              <input
+                [(ngModel)]="precioMax"
+                placeholder="Precio Maximo"
+                type="number"
+                min="1"
+                class="form-control my-1"
+              />
+            </div>
+              </div>
+              
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple"
+            ><span class="fw-semibold">Filtrar por Categoria</span>
             <div class="row">
               <div class="col-12 p-0">
-                <select [(ngModel)]="filtrarRango" class="form-select" aria-label="Default select example">
-                    <option value="" selected>Seleccione Rangos de precio</option>
-                    <option value="1">$1 - $99</option>
-                    <option value="2">$100 - $499</option>
-                    <option value="3">$500 - $999</option>
-                  </select>
+                <select [(ngModel)]="categoria" class="form-select my-1" aria-label="Default select example">
+                  <option value="" selected>Selecciona Categoria</option>
+                  <option value="1">1 - Clothes</option>
+                  <option value="2">2 - Tech</option>
+                  <option value="3">3 - Furniture</option>
+                  <option value="4">4 - Shoes</option>
+                  <option value="5">5 - Miscellaneous</option>
+                </select>
               </div>
                 </div>
                 
               </a>
-              <button [disabled]="filtrarRango === ''"  [routerLink]="['/products/rango/', filtrarRango]" class="btn btn-primary"
-            >Filtrar por rango de precio</button>
-        </div>
+            <button [disabled]="categoria === '' && ((precioMin >= precioMax) || precioMin == null ||  precioMax == null) && titulo === ''" (click)="crearUrl()" [routerLink]="['/products/filtro/', (categoria || null) + '-' + (titulo || null) + '-' + (precioMin || null) + '-' + (precioMax || null)]" class="btn btn-primary"
+          >Filtrar</button>
       </div>
-    </nav>
-    <!-- Sidebar -->
-  
-    <!-- Navbar -->
-    <!-- Navbar -->
-  </header>
-  <!--Main Navigation-->
-  
-  <!--Main layout-->
-  <main style="margin-top: 58px">
-    <div class="container pt-4"></div>
-  </main>
-  <!--Main layout-->
+    </div>
+  </nav>
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px">
+  <div class="container pt-4"></div>
+</main>
+<!--Main layout-->

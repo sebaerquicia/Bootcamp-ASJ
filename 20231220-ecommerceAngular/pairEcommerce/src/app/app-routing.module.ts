@@ -31,6 +31,10 @@ const routes: Routes = [
       {
         path: 'rango/:rangoValor',
         component: CatalogoComponent
+      },
+      {
+        path: 'filtro/:fullpath',
+        component: CatalogoComponent
       }
     ]
   },

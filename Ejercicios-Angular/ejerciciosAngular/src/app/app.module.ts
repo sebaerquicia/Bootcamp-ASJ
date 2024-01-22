@@ -15,6 +15,7 @@ import { RickandmortyComponent } from './components/rickandmorty/rickandmorty.co
 import { RickandmortyDetailsComponent } from './components/rickandmorty-details/rickandmorty-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ServicioEjemploService } from './services/servicio-ejemplo.service';
+import { PrimePipe } from './pipes/prime.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ServicioEjemploService } from './services/servicio-ejemplo.service';
     InicioComponent,
     RickandmortyComponent,
     RickandmortyDetailsComponent,
+    PrimePipe,
   ],
   imports: [
     BrowserModule,

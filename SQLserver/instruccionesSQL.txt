@@ -1,0 +1,85 @@
+CREATE TABLE Categoria(
+ id_categoria INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+ nombre_categoria varchar(50),
+  id_genero INT,
+  FOREIGN KEY (id_genero) REFERENCES Genero (id_genero)
+);
+
+
+CREATE TABLE Direccion(
+ id_direccion INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+ id_provincia INT,
+ calle varchar(50),
+  numero INT,
+  cod_postal INT,
+   FOREIGN KEY (id_provincia) REFERENCES Provincia (id_provincia)
+);
+
+
+CREATE TABLE Tienda(
+ id_tienda INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+ id_direccion INT,
+ nombre_tienda varchar(50),
+   FOREIGN KEY (id_direccion) REFERENCES Direccion (id_direccion)
+);
+
+
+
+CREATE TABLE Socio(
+ id_socio INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+ id_direccion INT,
+ nombre_socio varchar(50),
+  apellido_socio varchar(50),
+  fecha_nacimiento date,
+  mail_socio varchar(50),
+  telefono_socio INT,
+  dni_socio INT
+   FOREIGN KEY (id_direccion) REFERENCES Direccion (id_direccion)
+);
+
+
+CREATE TABLE MedioPago(
+   id_medioPago INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+ nombre_medio varchar(50),
+);
+
+CREATE TABLE Operacion(
+ id_operacion INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+ id_socio INT,
+   id_empleado INT,
+   id_medioPago INT,
+ fecha_operacion datetime,
+  descuento_socio_total FLOAT,
+  fecha_estimada datetime,
+    fecha_entrega datetime,
+  mail_contacto varchar(50),
+  telefono_contacto INT,
+  FOREIGN KEY (id_socio) REFERENCES Socio (id_socio),
+  FOREIGN KEY (id_empleado) REFERENCES Empleado (id_empleado),
+  FOREIGN KEY (id_medioPago) REFERENCES MedioPago (id_mediopago),
+);
+
+
+CREATE TABLE OperacionDetalle(
+ id_operacionDetalle INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+ id_operacion int,
+ id_item int,
+ id_tipoOperacion int,
+ cantidad int,
+ precio_unitario float,
+ FOREIGN KEY (id_operacion) REFERENCES Operacion (id_operacion),
+ FOREIGN KEY (id_tipoOperacion) REFERENCES TipoOperacion (id_tipoOperacion),
+
+  );
+
+
+CREATE TABLE TiendaItemStock(
+ id_tiendaItemStock INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+ id_tienda int,
+ id_item int,
+ cantidad int,
+ fecha_actualizacion datetime,
+ isIngreso bit,
+ FOREIGN KEY (id_tienda) REFERENCES Tienda (id_tienda),
+ FOREIGN KEY (id_item) REFERENCES Item (id_item),
+  );

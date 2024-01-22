@@ -10,16 +10,24 @@
         <div class="row">
             <div class="col ">
 
-                <input class="p-2 w-25 mx-3" type="text" placeholder="Ingresa una tarea que deseas anotar"(keyup.enter)="agregarTarea()" [(ngModel)]="nuevaTarea">
+                <input class="p-2 w-25 mx-3" type="text" placeholder="Ingresa el nombre de la tarea"(keyup.enter)="agregarTarea()" [(ngModel)]="nuevaTareaNombre">
+                <input class="p-2 w-25 mx-3" type="text" placeholder="Ingresa la descripcion"(keyup.enter)="agregarTarea()" [(ngModel)]="nuevaTareaDescripcion">
                 <button class="btn btn-success " (click)="agregarTarea()">Agregar tarea</button>
                 <button class="btn btn-primary  mx-2 " (click)="mostrarTachadas = !mostrarTachadas"> {{mostrarTachadas ? 'Todas las tareas' : 'A realizar...'}}</button>
             </div>  
         </div>
-        <div class="row">
+        <div class="row ">
             <div class="col p-5 ">
-                <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let tarea of filtrarTarea(); let i = index" [ngClass]="{'tachado':tarea.tachada}"> {{i + 1}}- {{tarea.texto}} <div class="float-end "> <button (click)="tacharTarea(i)"  class="btn btn-warning mx-3 ">{{tarea.tachada ? 'Desmarcar' : 'Finalizar'}}</button> <button (click)="eliminarTarea(i)"  class="btn btn-danger ">Eliminar</button></div></li>
-                </ul>
+             <ul class="list-group ">
+                    <li class="list-group-item" *ngFor="let tarea of filtrarTarea();
+                     let i = index" [ngClass]="{'tachado':tarea.estado}">
+                      {{i + 1}} - Nombre: {{tarea.nombre}} - Desc: {{tarea.descripcion}} 
+                      <div class="float-end "> 
+                        <button (click)="tacharTarea(i)"  class="btn btn-warning mx-3 ">{{tarea.estado ? 'Desmarcar' : 'Finalizar'}}</button> 
+                        <button (click)="eliminarTarea(tarea.id)"  class="btn btn-danger ">Eliminar</button>
+                    </div>
+                </li>
+                </ul> 
             </div>
         </div>
     </div>

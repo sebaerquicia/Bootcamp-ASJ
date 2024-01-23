@@ -1,47 +1,185 @@
-<div>
-    <h2>Carga tu video de YouTube</h2>
-    <form (ngSubmit)="submitForm(formulario)" #formulario="ngForm">
-        <label for="url">URL: </label>
-            <input type="text" name="url" [(ngModel)]="urlModel" required>
+<div class="container flex">
+  <div class="row">
+    <div class="col text-center">
+      <h1>YouTube 8.0</h1>
+      <h2>Agregue videos de forma gratiuta</h2>
+      <form (ngSubmit)="submitForm(formulario)" #formulario="ngForm">
+        <div class="row">
+          <div class="col-7">
+            <div class="col">
+              <label for="title">Titulo: </label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                [(ngModel)]="titleModel"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="category">Categoria: </label>
+              <input
+                type="text"
+                class="form-control"
+                id="category"
+                name="category"
+                [(ngModel)]="categoryModel"
+                required
+              />
+            </div>
 
-        <label for="category">Categoria: </label>
-            <input type="text" name="category" [(ngModel)]="categoryModel" required>
-
-        <label for="title">Titulo: </label>
-            <input type="text" name="title" [(ngModel)]="titleModel" required>
-
-        <label for="description">Descripcion: </label>
-            <textarea type="text" name="description" [(ngModel)]="descriptionModel"></textarea>
-
-        <label for="views">Vistas: </label>
-            <input type="number" name="views" [(ngModel)]="viewsModel" required>
-
-        <label for="likes">Me Gusta: </label>
-            <input type="number" name="likes" [(ngModel)]="likesModel" required>
-
-        <label for="dislikes">No Me Gusta: </label>
-            <input type="number" name="dislikes" [(ngModel)]="dislikesModel" required>
-
-        <button type="submit">Cargar Video</button>
-
-    </form>
-        <h2>Videos cargados:</h2>
-        <ul>
-            <li *ngFor="let video of videos; let i = index">
-              <a href="javascript:void(0);" (click)="showIframe(i)">Titulo: {{ video.title }}</a>
-              <div *ngIf="showVideo && selectedIndex === i">
-                <iframe width="560" height="315" [src]="video.url | safeUrl" frameborder="0"></iframe>
+            <div class="row">
+              <div class="col">
+                <label for="description">Descripcion: </label>
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="description"
+                  name="description"
+                  [(ngModel)]="descriptionModel"
+                ></textarea>
               </div>
-              /Categoria: {{ video.category }} /Descripcion: {{ video.description }} /Vistas: {{ video.views }} /Me gusta: {{ video.likes }} /No Me Gusta: {{ video.dislikes }}
-            </li>
-          </ul>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="views">Vistas: </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="views"
+                  name="views"
+                  [(ngModel)]="viewsModel"
+                  required
+                />
+              </div>
+              <div class="col">
+                <label for="likes">Me Gusta: </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="likes"
+                  name="likes"
+                  [(ngModel)]="likesModel"
+        
 
-</div>
+                  required
+                />
+              </div>
+              <div class="col">
+                <label for="dislikes">No Me Gusta: </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="dislikes"
+                  name="dislikes"
+                  [(ngModel)]="dislikesModel"
+     
+                  required
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <label for="url">URL: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="url"
+                  name="url"
+                  [(ngModel)]="urlModel"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col align-items-center">
+            <button type="submit" class="btn btn-success mt-4 p-4 ">
+              <p class="h2">Cargar Video</p>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row m-2">
+    <div class="col m-3">
+      <hr />
+      <h2>Videos cargados:</h2>
+      <div class="row">
+        <div class="col-md-5">
+          <input
+            type="text"
+            placeholder="Buscar por titulo"
+            [(ngModel)]="search"
+            class="form-control justify-content-end m-2"
+          />
+        </div>
+        <div class="col-md-5">
+          <input
+            type="text"
+            placeholder="Buscar por categoria"
+            [(ngModel)]="searchByCat"
+            class="form-control justify-content-end m-2"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row bg-body-tertiary">
+      <div
+        ngClass="col-md-6  align-items-center"
+        *ngFor="
+          let video of videos | search : search | searchByCat : searchByCat;
+          let i = index
+        "
+        class="p-4"
+      >
+        <a
+          class="h1 py-3 text-decoration-none text-primary "
+          href="javascript:void(0);"
+          (click)="showIframe(i, video.id)"
+          >{{ video.title }}</a
+        >
+        <div *ngIf="showVideo && selectedIndex === i">
+          <iframe
+            width="560"
+            height="315"
+            [src]="video.url | safeUrl"
+            frameborder="0"
+          ></iframe>
+        </div>
+        <br />
+        <h3>Categoria: {{ video.category }}</h3>
+        <br />
+        <p>Descripcion: {{ video.description }}</p>
+        <br />
+        <h4>Vistas: {{ video.views }}</h4>
+        <br />
+        <button
+          class="m-3 btn btn-outline-success"
+          (click)="sumarLike(video.id)"
+        >
+          Me Gusta
+        </button>
+        {{ video.likes }}
+        <button
+          class="m-3 btn btn-outline-warning"
+          (click)="sumarDislike(video.id)"
+        >
+          No Me Gusta
+        </button>
+        {{ video.dislikes }} 
 <!-- 
-    los botones de mg 
-    filtrar por categoria
-    filtrar por titulo
-    eliminar video
-    cada vez que se ingrese al detalle para reproducir, se deberá sumar una vista nueva
-    lo de las estrellitas pedorras
- -->
+        <input type="range" [(ngModel)]="rate" [min]="0" [max]="5" step="1"class="star-slider" />
+        <i class="fas fa-star"></i> -->
+        <br />
+        <button
+          (click)="eliminarVideo(video.id)"
+          class="m-3 btn btn-danger"
+        >
+          Eliminar video
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

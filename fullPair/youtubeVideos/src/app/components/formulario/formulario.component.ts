@@ -9,6 +9,9 @@ import { NgForm } from '@angular/forms';
 })
 export class FormularioComponent implements OnInit {
   showVideo: boolean = false;
+  search: string = '';
+  rate: number = 0;
+  searchByCat: string = '';
   videos: Videos[] = [];
   urlModel: string = '';
   categoryModel: string = '';
@@ -68,12 +71,37 @@ export class FormularioComponent implements OnInit {
   }
 
   selectedIndex: number = -1;
-  
-  showIframe(index: number) {
-    this.showVideo = !this.showVideo
+
+  showIframe(index: number, id: number | undefined) {
+    this.showVideo = !this.showVideo;
     this.selectedIndex = index;
+
+    if (id && this.showVideo == true) {
+      this.formService.sumarVistas(id).subscribe(() => {
+        this.obtenerVideos();
+      });
+    }
   }
-  
+
+  sumarLike(id: number | undefined) {
+    if (id) {
+        this.formService.sumarLike(id).subscribe(() => this.obtenerVideos());
+
+ 
+    }
+  }
+  sumarDislike(id: number | undefined) {
+    if (id) {
+        this.formService.sumarDislike(id).subscribe(() => this.obtenerVideos());
+    
+    }
+  }
+
+  eliminarVideo(id: number | undefined) {
+    if (id) {
+        this.formService.eliminarVideo(id).subscribe(() => this.obtenerVideos());
+    }
+  }
 }
 
 class Videos {

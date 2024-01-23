@@ -8,19 +8,25 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { SearchPipe } from './pipes/search.pipe';
+import { SearchByCatPipe } from './pipes/search-by-cat.pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    SearchPipe,
+    SearchByCatPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

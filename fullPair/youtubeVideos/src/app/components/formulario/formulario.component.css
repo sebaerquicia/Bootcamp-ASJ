@@ -1,0 +1,37 @@
+.star-slider {
+    /* -webkit-appearance: none; */
+   /*  appearance: none; */
+    width: 60%;
+    height: 25px;
+    background: linear-gradient(to right, #ffd700 0%, #ffd700 calc(20% * 1), #ccc calc(20% * 1), #ccc calc(20% * 2), #ffd700 calc(20% * 2), #ffd700 calc(20% * 3), #ccc calc(20% * 3), #ccc calc(20% * 4), #ffd700 calc(20% * 4), #ffd700 calc(20% * 5));
+    border-radius: 10px;
+    outline: none;
+    transition: background 0.2s;
+  }
+  
+  .star-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background-color: #ffd700;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .star-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background-color: #ffd700;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+  }
+  .fa-star {
+    position: absolute;
+    top: 5px;
+    left: calc((100% / 5) * var(--rating) - 10px); /* Ajusta la posición según la puntuación */
+    color: #ffd700;
+    font-size: 20px;
+  }

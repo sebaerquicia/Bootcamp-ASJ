@@ -1,0 +1,40 @@
+<div>
+    <h2>Carga tu video de YouTube</h2>
+    <form (ngSubmit)="submitForm(formulario)" #formulario="ngForm">
+        <label for="url">URL: </label>
+            <input type="text" name="url" [(ngModel)]="urlModel" required>
+
+        <label for="category">Categoria: </label>
+            <input type="text" name="category" [(ngModel)]="categoryModel" required>
+
+        <label for="title">Titulo: </label>
+            <input type="text" name="title" [(ngModel)]="titleModel" required>
+
+        <label for="description">Descripcion: </label>
+            <textarea type="text" name="description" [(ngModel)]="descriptionModel"></textarea>
+
+        <label for="views">Vistas: </label>
+            <input type="number" name="views" [(ngModel)]="viewsModel" required>
+
+        <label for="likes">Me Gusta: </label>
+            <input type="number" name="likes" [(ngModel)]="likesModel" required>
+
+        <label for="dislikes">No Me Gusta: </label>
+            <input type="number" name="dislikes" [(ngModel)]="dislikesModel" required>
+
+        <button type="submit">Cargar Video</button>
+
+    </form>
+        <h2>Videos cargados:</h2>
+        <ul>
+            <li *ngFor="let video of videos">
+                <a href="" onclick="showIframe()">{{video.title}}</a> 
+                <div (*ngIf="showVideo")>
+                    <iframe src={{video.url}} frameborder="0"></iframe>
+                </div>
+                / {{video.category}} / {{video.description}} / {{video.views}} / {{video.likes}} / {{video.dislikes}}
+
+            </li>
+        </ul>
+
+</div>

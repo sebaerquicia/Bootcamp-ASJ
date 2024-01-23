@@ -7,11 +7,13 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormularioComponent
+    FormularioComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,

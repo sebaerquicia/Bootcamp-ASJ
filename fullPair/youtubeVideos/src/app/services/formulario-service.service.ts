@@ -20,11 +20,6 @@ export class FormularioServiceService {
     return this.http.post<String>(this.apiUrl, nuevoVideo, { headers });
   }
 
-  public actualizarVideo(id: number, videoActualizado: any): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.put<any>(url, videoActualizado);
-  }
-
   public eliminarVideo(id: number): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<any>(url);

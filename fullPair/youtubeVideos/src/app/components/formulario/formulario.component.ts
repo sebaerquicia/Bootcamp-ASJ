@@ -8,8 +8,7 @@ import { NgForm } from '@angular/forms';
   styleUrl: './formulario.component.css',
 })
 export class FormularioComponent implements OnInit {
-
-  showVideo: boolean =  false;
+  showVideo: boolean = false;
   videos: Videos[] = [];
   urlModel: string = '';
   categoryModel: string = '';
@@ -51,6 +50,7 @@ export class FormularioComponent implements OnInit {
         (respuesta) => {
           console.log('Video cargado:', respuesta);
           this.videos = respuesta;
+          this.obtenerVideos();
         },
         (error) => {
           console.error('Error al crear video:', error);
@@ -66,10 +66,14 @@ export class FormularioComponent implements OnInit {
       this.dislikesModel = 0;
     }
   }
-  showIframe(){
-    this.showVideo = !this.showVideo
-  }
 
+  selectedIndex: number = -1;
+  
+  showIframe(index: number) {
+    this.showVideo = !this.showVideo
+    this.selectedIndex = index;
+  }
+  
 }
 
 class Videos {

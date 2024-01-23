@@ -27,14 +27,21 @@
     </form>
         <h2>Videos cargados:</h2>
         <ul>
-            <li *ngFor="let video of videos">
-                <a href="" onclick="showIframe()">{{video.title}}</a> 
-                <div (*ngIf="showVideo")>
-                    <iframe src={{video.url}} frameborder="0"></iframe>
-                </div>
-                / {{video.category}} / {{video.description}} / {{video.views}} / {{video.likes}} / {{video.dislikes}}
-
+            <li *ngFor="let video of videos; let i = index">
+              <a href="javascript:void(0);" (click)="showIframe(i)">Titulo: {{ video.title }}</a>
+              <div *ngIf="showVideo && selectedIndex === i">
+                <iframe width="560" height="315" [src]="video.url | safeUrl" frameborder="0"></iframe>
+              </div>
+              /Categoria: {{ video.category }} /Descripcion: {{ video.description }} /Vistas: {{ video.views }} /Me gusta: {{ video.likes }} /No Me Gusta: {{ video.dislikes }}
             </li>
-        </ul>
+          </ul>
 
 </div>
+<!-- 
+    los botones de mg 
+    filtrar por categoria
+    filtrar por titulo
+    eliminar video
+    cada vez que se ingrese al detalle para reproducir, se deberá sumar una vista nueva
+    lo de las estrellitas pedorras
+ -->

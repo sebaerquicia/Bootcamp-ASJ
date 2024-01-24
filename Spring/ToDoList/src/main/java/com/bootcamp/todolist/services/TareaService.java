@@ -19,6 +19,8 @@ public class TareaService {
 	// Para obtener Tareas
 	public List<TareaModel> obtenerTareas(){
 		return tareaRepository.findAll(); // findAll() actua como  SELECT * FROM tareas en SQL y viene por defecto en JPA
+		//return tareaRepository.findByNombreLike("Tarea");
+	
 	}
 	
 	//para obtener 1 tarea segun id

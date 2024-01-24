@@ -1,7 +1,7 @@
 <div class="container flex">
   <div class="row">
-    <div class="col text-center">
-      <h1>YouTube 8.0</h1>
+    <div class="col ">
+      <h1 class="bg-danger text-white text-center">YouTube 8.0</h1>
       <h2>Agregue videos de forma gratiuta</h2>
       <form (ngSubmit)="submitForm(formulario)" #formulario="ngForm">
         <div class="row">
@@ -93,7 +93,7 @@
               </div>
             </div>
           </div>
-          <div class="col align-items-center">
+          <div class="col ">
             <button type="submit" class="btn btn-success mt-4 p-4 ">
               <p class="h2">Cargar Video</p>
             </button>
@@ -125,7 +125,7 @@
         </div>
       </div>
     </div>
-    <div class="row bg-body-tertiary">
+    <div class="row bg-body-tertiary ">
       <div
         ngClass="col-md-6  align-items-center"
         *ngFor="
@@ -138,8 +138,8 @@
           class="h1 py-3 text-decoration-none text-primary "
           href="javascript:void(0);"
           (click)="showIframe(i, video.id)"
-          >{{ video.title }}</a
-        >
+          >{{ video.title }} (Ver...)</a>
+
         <div *ngIf="showVideo && selectedIndex === i">
           <iframe
             width="560"
@@ -149,34 +149,38 @@
           ></iframe>
         </div>
         <br />
-        <h3>Categoria: {{ video.category }}</h3>
+        <h5 class="text-decoration-underline ">Categoria: {{ video.category }}</h5>
         <br />
-        <p>Descripcion: {{ video.description }}</p>
+        <p class="h4 text-opacity-25  ">Descripcion: {{ video.description }}</p>
         <br />
         <h4>Vistas: {{ video.views }}</h4>
         <br />
-        <button
+        <div *ngIf="showVideo && selectedIndex === i">
+
+          <button
           class="m-3 btn btn-outline-success"
           (click)="sumarLike(video.id)"
-        >
+          
+          >
           Me Gusta
         </button>
         {{ video.likes }}
         <button
-          class="m-3 btn btn-outline-warning"
-          (click)="sumarDislike(video.id)"
+        class="m-3 btn btn-outline-warning"
+        (click)="sumarDislike(video.id)"
         >
-          No Me Gusta
-        </button>
-        {{ video.dislikes }} 
-<!-- 
+        No Me Gusta
+      </button>
+      {{ video.dislikes }}
+      <!-- 
         <input type="range" [(ngModel)]="rate" [min]="0" [max]="5" step="1"class="star-slider" />
         <i class="fas fa-star"></i> -->
+      </div>
         <br />
         <button
-          (click)="eliminarVideo(video.id)"
+        (click)="eliminarVideo(video.id)"
           class="m-3 btn btn-danger"
-        >
+          >
           Eliminar video
         </button>
       </div>

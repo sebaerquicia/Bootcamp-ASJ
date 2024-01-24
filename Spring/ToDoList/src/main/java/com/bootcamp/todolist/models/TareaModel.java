@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tareas")
@@ -13,9 +15,9 @@ public class TareaModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+	@NotNull(message = "Error: El nombre no puede ser nulo")
 	private String nombre;
-	
+	@NotBlank(message = "Error: La descripcion no puede estar vacia")
 	private String descripcion;
 	
 	private boolean estado;
